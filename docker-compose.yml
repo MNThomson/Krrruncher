@@ -1,0 +1,42 @@
+version: "3.3"
+services:
+
+  nginx:
+    container_name: nginx
+    restart: always
+    build:
+      context: ./nginx
+    ports:
+      - "80:80"
+    networks:
+      - default
+    depends_on:
+      - flaskserver
+
+  flaskserver:
+    container_name: flaskserver
+    build:
+      context: ./flaskserver
+    networks:
+      - default
+    volumes:
+      - "./flaskserver/data:/data"
+
+  rabbitmq:
+    container_name: rabbitmq
+    build:
+      context: ./rabbitmq
+    networks:
+      - default
+
+  krrruncher:
+    restart: always
+    build:
+       context: ./krrruncher
+    networks:
+      - default
+    depends_on:
+      - rabbitmq
+    
+networks:
+  default: {}
