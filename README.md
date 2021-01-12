@@ -4,7 +4,7 @@ Why so many r's you might ask? To which I have no good answer, other than I felt
 
 ## What it does
 
-Krrruncher is a POC (Proof of Concept) Docker environment for cracking MD5 hashes (really exciting huh!). The primary focus of this project was to learn the basics of Python Flask & gain a better understanding of docker containers. It will brute force any hash (given enough time), but the recommended length is four characters and below. The `Random` option will generate a random md5 has with a 1 to 4 character space.
+Krrruncher is a POC (Proof of Concept) Docker environment for cracking MD5 hashes (really exciting huh!). The primary focus of this project was to learn the basics of Python Flask & gain a better understanding of docker containers. It will brute force any hash (given enough time), but the recommended length is four characters and below. The `Random` option will generate a random md5 hash with a 1 to 4 character space.
 
 ![Network Diagram](assets/networkdiagram.png?raw=true "Network Diagram")
 
