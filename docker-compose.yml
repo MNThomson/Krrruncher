@@ -21,6 +21,7 @@ services:
       - default
     volumes:
       - "./flaskserver/data:/data"
+      - "./flaskserver/templates:/flaskserver/templates"
 
   rabbitmq:
     container_name: rabbitmq
@@ -37,6 +38,20 @@ services:
       - default
     depends_on:
       - rabbitmq
+
+  websocketserver:
+    container_name: websocketserver
+    restart: always
+    build:
+      context: ./websocketserver
+    networks:
+      - default
+    depends_on:
+      - rabbitmq
+    volumes:
+      # map this file into container from host so that you don't have to do full docker rebuild everytime you
+      # edit the file
+      - "./websocketserver/websocketserver.py:/websocketserver/websocketserver.py"
     
 networks:
   default: {}

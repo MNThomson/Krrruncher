@@ -11,5 +11,21 @@
 			<input type="submit" value="Crack">
 			<input id = "Random" type = "button" value = "Random" onclick = "window.location.href = '/random';"/>
 		</form>
+    <script src="https://cdn.socket.io/socket.io-3.0.1.min.js"></script>
+    <script>
+        // this is bit of hack normally should go in separate file, but I'm lazy...
+        const socket = io({transports: ['websocket']});
+
+        socket.on("connect", () => {
+          console.log(socket.id);
+          console.log("socket connected!")
+        });
+
+        socket.on("broadcast", (data) => {
+          console.log(socket.id);
+          console.log("broadcast message received with data:");
+          console.log(data);
+        });
+    </script>
 	</body>
 </html>
